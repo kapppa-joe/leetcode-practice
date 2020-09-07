@@ -4,6 +4,7 @@
  * @return {boolean}
  */
 var wordPattern = function(pattern, str) {
+    if (str.length === 0) return false;
     let strArr = str.split(' ');
     if (strArr.length !== pattern.length) return false
 
