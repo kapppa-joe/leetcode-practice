@@ -30,5 +30,3 @@ var firstMissingPositive = function(nums) {
         return n + 1;
     }
 };
-
-firstMissingPositive([0,1,2,0]);
