@@ -1,9 +1,9 @@
 from collections import deque
 
-class RecentCounter:
 
+class RecentCounter:
     def __init__(self):
-        self.queue = deque();
+        self.queue = deque()
 
     def ping(self, t: int) -> int:
         q = self.queue
