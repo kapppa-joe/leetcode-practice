@@ -13,7 +13,6 @@ class Solution:
 
         return stack
 
-
     def collision(self, stack: List[int], right: int) -> List[int]:
         while stack:
             if stack[-1] < 0:
