@@ -2,3 +2,4 @@ node_modules/
 *make-test-case*
 .vscode/
 *notes*.txt
+*.cpython-38.pyc
