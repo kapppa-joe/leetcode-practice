@@ -5,7 +5,7 @@ class Solution:
     def atMostNGivenDigitSet(self, digits: List[str], n: int) -> int:
 
         def helper(n: int, k: int) -> int:
-            # count the numbers less than n and have exactly k digits
+            # count the numbers <= n and have exactly k digits
             if n == 0 or k == 0:
                 return 0
 
@@ -23,6 +23,7 @@ class Solution:
                            for d in digits if int(d) < int(str_n[0]))
                 if str_n[0] in digits:
                     # count the numbers start with d == n[0]
+                    # i.e. numbers <= n[1:] having exactly k-1 digits
                     res += helper(int('0' + str_n[1:]), k - 1)
             return res
 
