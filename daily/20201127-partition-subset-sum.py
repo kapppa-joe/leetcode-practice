@@ -14,7 +14,7 @@ class Solution:
         def dp(i: int, diff: int) -> bool:
             if diff == 0:
                 return True
-            elif i >= n:
+            elif diff < 0 or i >= n:
                 return False
             else:
                 return dp(i + 1, diff - nums[i]) or dp(i + 1, diff)
