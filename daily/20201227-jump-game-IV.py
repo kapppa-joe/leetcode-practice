@@ -8,36 +8,41 @@ class Solution:
             return 0
 
         n = len(arr)
-        visited = set()
-
-        edges = defaultdict(set)
         rev_dict = defaultdict(list)
-
         for i in range(n):
-            if i > 0:
-                edges[i].add(i - 1)
-            if i < n - 1:
-                edges[i].add(i + 1)
             rev_dict[arr[i]].append(i)
 
-        for v in rev_dict.values():
-            for i in v:
-                edges[i].update(v)
-                edges[i].remove(i)
-
         curr = set()
-        next = edges[0]
+        next = set(rev_dict[arr[0]])
+        next.add(1)
+        next.remove(0)
+        visited = set([0])
         dist = 0
+
         while True:
-            curr.update(next)
-            next.clear()
+            curr = next
+            next = set()
             dist += 1
             if n - 1 in curr:
                 return dist
 
             visited.update(curr)
             for node in curr:
-                next.update(edges[node])
-            next.difference_update(visited)
+                if node - 1 not in visited:
+                    next.add(node - 1)
+                    visited.add(node - 1)
+                if node + 1 not in visited:
+                    next.add(node + 1)
+                    visited.add(node + 1)
+            for val in set(map(lambda i: arr[i], curr)):
+                for idx in rev_dict[val]:
+                    if idx not in visited:
+                        next.add(idx)
+                        visited.add(idx)
+            next.discard(n)
+            # print(f'curr: {curr}')
+            # print(f'next: {next}')
 
 fn = Solution().minJumps
+arr = [1,3,5,7,9,19,39,57,6,9,2,49,119,699,999,10]
+arr2 = [7] * 49999 + [11]
